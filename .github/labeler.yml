@@ -1,0 +1,12 @@
+# Add 'repo' label to any root file changes
+repo:
+  - ./*
+
+# Add library changes label
+library:
+  - projects/ng-material-menu/src/lib/**/*
+
+# Add test to test changes
+test:
+  - e2e/*
+  - src/**/*.spec.ts
