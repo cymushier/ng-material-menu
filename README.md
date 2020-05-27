@@ -1,6 +1,6 @@
-# NgMaterialMenu
+# Ng Material Menu
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+This project project is an attempt to have a standard material menu for basis of faster applications development. It's inspired by the dynamic implementation of [Angular Material Documentation](https://angular.io)
 
 ## Development server
 
