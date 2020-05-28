@@ -1,2 +1,28 @@
-<p>ng-material-menu-item works!</p>
+<div *ngIf="!navigationItem?.children">
+    <a href="{{navigationItem.url}}" [ngClass]="classes" title="{{navigationItem.tooltip}}"
+        class="vertical-menu-item {{navigationItem.classes}}">
+        <span>{{navigationItem.title}}</span>
+    </a>
+</div>
 
+<div *ngIf="navigationItem?.children?.length > 0">
+    <a *ngIf="navigationItem.url != null" href="{{navigationItem.url}}" [ngClass]="classes"
+        title="{{navigationItem.tooltip}}" (click)="headerClicked()"
+        class="vertical-menu-item heading {{navigationItem.classes}}">
+        <span>{{navigationItem.title}}</span>
+        <mat-icon class="rotating-icon" svgIcon="keyboard_arrow_right"></mat-icon>
+    </a>
+
+    <button *ngIf="navigationItem.url == null" type="button" [ngClass]="classes" title="{{navigationItem.tooltip}}"
+        (click)="headerClicked()" class="vertical-menu-item heading {{navigationItem.classes}}"
+        [attr.aria-pressed]="isExpanded">
+        <span>{{navigationItem.title}}</span>
+        <mat-icon class="rotating-icon" svgIcon="keyboard_arrow_right"></mat-icon>
+    </button>
+
+    <div class="heading-children" [ngClass]="classes">
+        <nmm-ng-material-menu-item *ngFor="let node of navigationItemChildren" [level]="level + 1" [isWide]="isWide"
+            [isParentExpanded]="isExpanded" [navigationItem]="node" [selectedItems]="selectedItems">
+        </nmm-ng-material-menu-item>
+    </div>
+</div>
