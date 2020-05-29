@@ -5,6 +5,7 @@ import { NgMaterialTopMenuComponent } from './components/ng-material-top-menu/ng
 import { CommonModule } from '@angular/common';
 
 // Material Modules
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -18,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     // Material modules
+    MatBadgeModule,
     MatButtonModule,
     MatIconModule,
   ],

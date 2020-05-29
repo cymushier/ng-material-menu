@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { NavigationItem } from '../../models';
+import { NavigationItem } from '../../models/models';
 
 @Component({
   selector: 'nmm-ng-material-menu-item',

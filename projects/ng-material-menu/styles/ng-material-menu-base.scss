@@ -1,0 +1,231 @@
+// TYPOGRAPHY
+$main-font: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+$code-font: "Droid Sans Mono", monospace;
+
+// Z-LAYER
+$layer-1: 1;
+$layer-2: 2;
+$layer-3: 3;
+$layer-4: 4;
+$layer-5: 5;
+
+// COLOR PALETTE
+$blue: #1976D2;
+$accentblue: #1E88E5;
+$brightred: #DD0031;
+$darkred: #C3002F;
+$white: #FFFFFF;
+$offwhite: #FAFAFA;
+$backgroundgray: #F1F1F1;
+$lightgray: #DBDBDB;
+$lightboxgray: #EBEBEB;
+$mist: #ECEFF1;
+$mediumgray: #6E6E6E;
+$darkgray: #444444;
+$deepgray: #333333;
+$black: #0A1014;
+$orange: #FF9800;
+$darkorange: #940;
+$anti-pattern: $brightred;
+
+// API & CODE COLORS
+$amber-700: #FFA000;
+$blue-400: #42A5F5;
+$blue-500: #2196F3;
+$blue-600: #1E88E5;
+$blue-800: #1565C0;
+$blue-900: #0D47A1;
+$blue-grey-50: #ECEFF1;
+$blue-grey-100: #CFD8DC;
+$blue-grey-200: #B0BEC5;
+$blue-grey-300: #90A4AE;
+$blue-grey-400: #78909C;
+$blue-grey-500: #607D8B;
+$blue-grey-600: #546E7A;
+$blue-grey-700: #455A64;
+$blue-grey-800: #37474F;
+$blue-grey-900: #263238;
+$codegreen: #17ff0b;
+$green-500: #4CAF50;
+$green-800: #2E7D32;
+$light-green-600: #7CB342;
+$pink-600: #D81B60;
+$purple-600: #8E24AA;
+$teal-500: #009688;
+$lightgrey: #F5F6F7;
+
+// STATE COLORS
+$focus-outline-ondark: rgba($white, 0.8);
+$focus-outline-onlight: $accentblue;
+
+// GRADIENTS
+$bluegradient: linear-gradient(145deg,$blue-900,$blue-400);
+$redgradient: linear-gradient(145deg,$darkred,$brightred);
+
+// API LABEL COLOR AND SYMBOLS MAP
+$api-symbols: (
+  all: (
+    content: ' ',
+    background: $white
+  ),
+  class: (
+    content: 'C',
+    background: $blue-500
+  ),
+  const: (
+    content: 'K',
+    background: $mediumgray
+  ),
+  decorator: (
+    content: '@',
+    background: $blue-800
+  ),
+  directive: (
+    content: 'D',
+    background: $pink-600
+  ),
+  enum: (
+    content: 'E',
+    background: $amber-700
+  ),
+  function: (
+    content: 'F',
+    background: $green-500
+  ),
+  interface: (
+    content: 'I',
+    background: $teal-500
+  ),
+  let: (
+    content: 'K',
+    background: $mediumgray
+  ),
+  ngmodule: (
+    content: 'M',
+    background: $darkorange
+  ),
+  package: (
+    content: 'Pk',
+    background: $purple-600
+  ),
+  pipe: (
+    content: 'P',
+    background: $blue-grey-600
+  ),
+  type-alias: (
+    content: 'T',
+    background: $light-green-600
+  ),
+  var: (
+    content: 'K',
+    background: $mediumgray
+  ),
+);
+
+// OTHER
+$small-breakpoint-width: 840px;
+$phone-breakpoint: 480px;
+$tablet-breakpoint: 800px;
+
+/************************************
+
+             Media queries
+
+ To use these, put this snippet in the appropriate selector:
+
+     @include bp(tiny) {
+         background-color: purple;
+     }
+
+     Replace "tiny" with "medium" or "big" as necessary.
+*************************************/
+
+@mixin bp($point) {
+
+  $bp-xsmall: "(min-width: 320px)";
+  $bp-teeny: "(min-width: 480px)";
+  $bp-tiny: "(min-width: 600px)";
+  $bp-small: "(min-width: 650px)";
+  $bp-medium: "(min-width: 800px)";
+  $bp-big: "(min-width: 1000px)";
+
+  @if $point == big {
+    @media #{$bp-big} { @content; }
+  }
+  @else if $point == medium {
+    @media #{$bp-medium} { @content; }
+  }
+  @else if $point == small {
+    @media #{$bp-small}  { @content; }
+  }
+  @else if $point == tiny {
+    @media #{$bp-tiny}  { @content; }
+  }
+  @else if $point == teeny {
+    @media #{$bp-teeny}  { @content; }
+  }
+  @else if $point == xsmall {
+    @media #{$bp-xsmall}  { @content; }
+  }
+}
+
+// REM Font Adjustments
+@mixin font-size($sizeValue) {
+  font-size: ($sizeValue) + px;
+  font-size: ($sizeValue / 10) + rem;
+}
+
+@mixin letter-spacing($spacingValue) {
+  letter-spacing: ($spacingValue) + px;
+  letter-spacing: ($spacingValue / 10) + rem;
+}
+
+@mixin line-height($heightValue) {
+  line-height: ($heightValue) + px;
+  line-height: ($heightValue / 10) + rem;
+}
+
+// PLACEHOLDER
+// NOTE: Vendor-prefixed selectors must be on separate blocks, because one invalid/unknown
+//       selector will invalidate the whole block.
+@mixin placeholder {
+  &:-ms-input-placeholder      { @content; }  // IE
+  &::-ms-input-placeholder     { @content; }  // Edge
+  &::-webkit-input-placeholder { @content; }  // QQ Browser
+  &::placeholder               { @content; }  // Chrome/Firefox/Safari
+}
+
+@mixin rotate($degrees) {
+  -moz-transform: rotate($degrees);
+  -webkit-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+  transition: transform 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+@mixin codeblock($bgcolor) {
+    background-color: $bgcolor;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto; // was 24
+    border: 0.5px solid $lightgray;
+}
+
+// INFO CARD SKELETON
+@mixin card($height, $width) {
+  height: $height;
+  width: $width;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba($black, 0.24), 0 0 2px rgba($black, 0.12);
+  box-sizing: border-box;
+  transition: box-shadow .5s;
+
+  &:hover {
+    box-shadow: 0 8px 8px rgba($black, 0.24), 0 0 8px rgba($black, 0.12);
+    text-decoration: none;
+  }
+}
+

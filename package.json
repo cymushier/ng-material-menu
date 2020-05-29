@@ -1,5 +1,5 @@
 {
-  "name": "ng-material-menu",
+  "name": "ng-material-menu-demo",
   "displayName": "NG Material Menu",
   "version": "0.0.0",
   "publisher": "Cyrus Mushier",
@@ -7,6 +7,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build_lib": "ng build --prod --project ng-material-menu",
+    "npm_pack": "cd dist/ng-material-menu && npm pack",
+    "package": "npm run build_lib && npm run npm_pack",
+    "install_local": "npm run package && npm install dist/ng-material-menu/ng-material-menu-0.0.1.tgz",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,6 +27,7 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "ng-material-menu": "file:dist/ng-material-menu/ng-material-menu-0.0.1.tgz",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

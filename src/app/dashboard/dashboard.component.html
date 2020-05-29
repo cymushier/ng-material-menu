@@ -1,1 +1,46 @@
-<p>dashboard works!</p>
+<div id="top-of-page"></div>
+
+<!-- <div *ngIf="isFetching" class="progress-bar-container">
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</div> -->
+
+<mat-toolbar color="primary" class="app-toolbar no-print">
+  <mat-toolbar-row>
+    <button mat-icon-button color="primary" class="hamburger" (click)="sidenav.toggle()" title="Docs menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a class="nav-link home" href="/" [ngSwitch]="isSideBySide">
+      <img *ngSwitchCase="true" src="assets/images/logos/angular/logo-nav@2x.png" width="150" height="40" title="Home" alt="Home">
+      <img *ngSwitchDefault src="assets/images/logos/angular/shield-large.svg" width="37" height="40" title="Home" alt="Home">
+    </a>
+    <!-- <aio-top-menu *ngIf="isSideBySide" [nodes]="topMenuNodes" [currentNode]="currentNodes?.TopBar"></aio-top-menu>
+    <aio-search-box class="search-container" #searchBox (onSearch)="doSearch($event)" (onFocus)="doSearch($event)"></aio-search-box> -->
+    <!-- <div class="toolbar-external-icons-container">
+      <a href="https://twitter.com/angular" title="Twitter" aria-label="Angular on twitter">
+        <mat-icon svgIcon="logos:twitter"></mat-icon>
+      </a>
+      <a href="https://github.com/angular/angular" title="GitHub" aria-label="Angular on github">
+        <mat-icon svgIcon="logos:github"></mat-icon>
+      </a>
+    </div> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container" [class.has-floating-toc]="hasFloatingToc" role="main">
+
+    <mat-sidenav [ngClass]="{'collapsed': !isSideBySide}" #sidenav class="sidenav" [mode]="mode" [opened]="isOpened"
+        (openedChange)="updateHostClasses()">
+        <!-- When displaying collapsed menu in mobile -->
+        <!-- <nmm-ng-material-menu *ngIf="!isSideBySide" [menus]="menus" [isWide]="false"></nmm-ng-material-menu> -->
+
+        <!-- Main menu -->
+        <nmm-ng-material-menu [menus]="menus" [isWide]="isSideBySide"></nmm-ng-material-menu>
+    </mat-sidenav>
+
+    <main class="sidenav-content" [id]="pageId" role="main">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <p>dashboard works!</p>
+
+    </main>
+
+</mat-sidenav-container>

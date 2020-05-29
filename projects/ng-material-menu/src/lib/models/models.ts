@@ -57,10 +57,4 @@ export interface NavigationItem {
      * The children for this navigation item.
      */
     children?: NavigationItem[];
-    /**
-     * The callback to be called before rendering the menu. Could ideally be to initiate
-     * checks whether this menu should be called or not.
-     * @param args The arguments to call this method with.
-     */
-    renderCallback(...args: any): Promise<boolean>;
 }
